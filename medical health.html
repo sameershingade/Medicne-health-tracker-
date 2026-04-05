@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="MedTrack — Smart Medicine & Health Routine Tracker. Track medications, hydration, habits, and get health insights with timely reminders.">
+    <title>MedTrack — Medicine & Health Routine Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <!-- Ambient Background -->
+    <div class="ambient-bg">
+        <div class="ambient-orb orb-1"></div>
+        <div class="ambient-orb orb-2"></div>
+        <div class="ambient-orb orb-3"></div>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <nav id="sidebar" class="sidebar">
+        <div class="sidebar-logo">
+            <div class="logo-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                        d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+                    <circle cx="12" cy="12" r="4" />
+                </svg>
+            </div>
+            <span class="logo-text">MedTrack</span>
+        </div>
+
+        <div class="nav-section">
+            <span class="nav-label">MAIN</span>
+            <a href="#" class="nav-item active" data-page="dashboard" id="nav-dashboard">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="7" height="7" rx="1" />
+                    <rect x="14" y="3" width="7" height="7" rx="1" />
+                    <rect x="3" y="14" width="7" height="7" rx="1" />
+                    <rect x="14" y="14" width="7" height="7" rx="1" />
+                </svg>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-item" data-page="medications" id="nav-medications">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                        d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 17.25h3" />
+                    <line x1="9" y1="9" x2="15" y2="9" />
+                    <line x1="12" y1="6" x2="12" y2="12" />
+                </svg>
+                <span>Medications</span>
+            </a>
+            <a href="#" class="nav-item" data-page="habits" id="nav-habits">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+                <span>Habits</span>
+            </a>
+            <a href="#" class="nav-item" data-page="hydration" id="nav-hydration">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" />
+                </svg>
+                <span>Hydration</span>
+            </a>
+        </div>
+
+        <div class="nav-section">
+            <span class="nav-label">ANALYTICS</span>
+            <a href="#" class="nav-item" data-page="reports" id="nav-reports">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="20" x2="18" y2="10" />
+                    <line x1="12" y1="20" x2="12" y2="4" />
+                    <line x1="6" y1="20" x2="6" y2="14" />
+                </svg>
+                <span>Reports</span>
+            </a>
+            <a href="#" class="nav-item" data-page="insights" id="nav-insights">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" y1="16" x2="12" y2="12" />
+                    <line x1="12" y1="8" x2="12.01" y2="8" />
+                </svg>
+                <span>Insights</span>
+            </a>
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="user-profile" id="user-profile">
+                <div class="avatar">P</div>
+                <div class="user-info">
+                    <span class="user-name">Patient</span>
+                    <span class="user-role">Health Tracker</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12" />
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <line x1="3" y1="18" x2="21" y2="18" />
+                </svg>
+            </button>
+            <div class="top-bar-left">
+                <h1 id="page-title" class="page-title">Dashboard</h1>
+                <p id="page-subtitle" class="page-subtitle">Welcome back! Here's your health overview.</p>
+            </div>
+            <div class="top-bar-right">
+                <div class="date-display" id="date-display"></div>
+                <button class="btn-icon notification-btn" id="notification-btn" aria-label="Notifications">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                        <path d="M13.73 21a2 2 0 01-3.46 0" />
+                    </svg>
+                    <span class="notification-badge" id="notification-badge">3</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Pages Container -->
+        <div class="pages-container">
+
+            <!-- ===== DASHBOARD PAGE ===== -->
+            <section id="page-dashboard" class="page active">
+                <!-- Quick Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card stat-meds">
+                        <div class="stat-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3" />
+                                <line x1="9" y1="9" x2="15" y2="9" />
+                                <line x1="12" y1="6" x2="12" y2="12" />
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-meds-taken">0/0</span>
+                            <span class="stat-label">Meds Taken Today</span>
+                        </div>
+                        <div class="stat-trend up">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                            </svg>
+                            <span>92%</span>
+                        </div>
+                    </div>
+                    <div class="stat-card stat-water">
+                        <div class="stat-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" />
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-water">0</span>
+                            <span class="stat-label">Glasses of Water</span>
+                        </div>
+                        <div class="stat-trend up">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                            </svg>
+                            <span>+2</span>
+                        </div>
+                    </div>
+                    <div class="stat-card stat-streak">
+                        <div class="stat-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-streak">0</span>
+                            <span class="stat-label">Day Streak</span>
+                        </div>
+                        <div class="stat-trend up">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                            </svg>
+                            <span>Best!</span>
+                        </div>
+                    </div>
+                    <div class="stat-card stat-habits">
+                        <div class="stat-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+                                <polyline points="22 4 12 14.01 9 11.01" />
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-habits-done">0/0</span>
+                            <span class="stat-label">Habits Completed</span>
+                        </div>
+                        <div class="stat-trend up">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                            </svg>
+                            <span>85%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Dashboard Grid -->
+                <div class="dashboard-grid">
+                    <!-- Today's Schedule -->
+                    <div class="card schedule-card">
+                        <div class="card-header">
+                            <h2>Today's Schedule</h2>
+                            <span class="card-badge" id="schedule-count">0 items</span>
+                        </div>
+                        <div class="schedule-timeline" id="schedule-timeline">
+                            <!-- Filled by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Weekly Overview Chart -->
+                    <div class="card chart-card">
+                        <div class="card-header">
+                            <h2>Weekly Adherence</h2>
+                            <div class="chart-legend">
+                                <span class="legend-dot meds"></span> Meds
+                                <span class="legend-dot habits"></span> Habits
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="weekly-chart" width="500" height="220"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Reminders -->
+                    <div class="card reminders-card">
+                        <div class="card-header">
+                            <h2>Upcoming Reminders</h2>
+                            <button class="btn-sm" id="btn-add-reminder">+ Add</button>
+                        </div>
+                        <div class="reminders-list" id="reminders-list">
+                            <!-- Filled by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Health Score -->
+                    <div class="card health-score-card">
+                        <div class="card-header">
+                            <h2>Health Score</h2>
+                        </div>
+                        <div class="health-score-container">
+                            <div class="score-ring">
+                                <svg viewBox="0 0 120 120">
+                                    <circle cx="60" cy="60" r="52" class="score-bg" />
+                                    <circle cx="60" cy="60" r="52" class="score-fill" id="score-ring-fill" />
+                                </svg>
+                                <div class="score-value" id="health-score">0</div>
+                            </div>
+                            <div class="score-breakdown">
+                                <div class="score-item">
+                                    <span class="score-item-label">Medication</span>
+                                    <div class="score-bar">
+                                        <div class="score-bar-fill" id="score-med" style="width:0%"></div>
+                                    </div>
+                                </div>
+                                <div class="score-item">
+                                    <span class="score-item-label">Hydration</span>
+                                    <div class="score-bar">
+                                        <div class="score-bar-fill hydration" id="score-hydration" style="width:0%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="score-item">
+                                    <span class="score-item-label">Habits</span>
+                                    <div class="score-bar">
+                                        <div class="score-bar-fill habits" id="score-habits" style="width:0%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== MEDICATIONS PAGE ===== -->
+            <section id="page-medications" class="page">
+                <div class="page-actions">
+                    <button class="btn-primary" id="btn-add-med">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                        Add Medication
+                    </button>
+                </div>
+                <div class="medications-grid" id="medications-grid">
+                    <!-- Filled by JS -->
+                </div>
+            </section>
+
+            <!-- ===== HABITS PAGE ===== -->
+            <section id="page-habits" class="page">
+                <div class="page-actions">
+                    <button class="btn-primary" id="btn-add-habit">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                        Add Habit
+                    </button>
+                </div>
+                <div class="habits-list-container" id="habits-list-container">
+                    <!-- Filled by JS -->
+                </div>
+                <div class="card habit-calendar-card">
+                    <div class="card-header">
+                        <h2>Habit Heatmap — Last 30 Days</h2>
+                    </div>
+                    <div class="heatmap-container" id="heatmap-container">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== HYDRATION PAGE ===== -->
+            <section id="page-hydration" class="page">
+                <div class="hydration-hero">
+                    <div class="water-bottle">
+                        <div class="bottle-body">
+                            <div class="water-fill" id="water-fill"></div>
+                            <div class="water-wave"></div>
+                        </div>
+                        <div class="bottle-label">
+                            <span class="bottle-amount" id="bottle-amount">0</span>
+                            <span class="bottle-unit">/ 8 glasses</span>
+                        </div>
+                    </div>
+                    <div class="hydration-controls">
+                        <h2>Stay Hydrated</h2>
+                        <p>Track your daily water intake to stay healthy.</p>
+                        <div class="water-buttons">
+                            <button class="water-btn" id="btn-water-add" data-amount="1">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" />
+                                </svg>
+                                +1 Glass
+                            </button>
+                            <button class="water-btn" id="btn-water-add-half" data-amount="0.5">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" />
+                                </svg>
+                                +½ Glass
+                            </button>
+                            <button class="water-btn danger" id="btn-water-reset">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="1 4 1 10 7 10" />
+                                    <path d="M3.51 15a9 9 0 102.13-9.36L1 10" />
+                                </svg>
+                                Reset
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Hydration History — Last 7 Days</h2>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="hydration-chart" width="600" height="220"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== REPORTS PAGE ===== -->
+            <section id="page-reports" class="page">
+                <div class="reports-header">
+                    <div class="report-period-selector">
+                        <button class="period-btn active" data-period="week">This Week</button>
+                        <button class="period-btn" data-period="month">This Month</button>
+                        <button class="period-btn" data-period="all">All Time</button>
+                    </div>
+                </div>
+                <div class="reports-grid">
+                    <div class="card report-summary-card">
+                        <div class="card-header">
+                            <h2>Consistency Report</h2>
+                        </div>
+                        <div class="report-metrics" id="report-metrics">
+                            <!-- Filled by JS -->
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Adherence Over Time</h2>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="report-chart" width="700" height="250"></canvas>
+                        </div>
+                    </div>
+                    <div class="card report-details-card">
+                        <div class="card-header">
+                            <h2>Medication Log</h2>
+                        </div>
+                        <div class="report-table-container">
+                            <table class="report-table" id="report-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Medication</th>
+                                        <th>Scheduled</th>
+                                        <th>Taken At</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="report-table-body">
+                                    <!-- Filled by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== INSIGHTS PAGE ===== -->
+            <section id="page-insights" class="page">
+                <div class="insights-grid" id="insights-grid">
+                    <!-- Filled by JS -->
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal" id="modal">
+            <div class="modal-header">
+                <h2 id="modal-title">Add Medication</h2>
+                <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Dynamic form content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
